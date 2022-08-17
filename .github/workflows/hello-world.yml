@@ -30,7 +30,9 @@ jobs:
         run: "gradle clean shadowjar -p app"
   Test:
     runs-on: ubuntu-latest
-    needs: Build
+    needs: clone-down
+    container: gradle:6-jdk11
+    steps:
       - name: Test
         run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
       - name: upload repo
