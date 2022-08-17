@@ -2,26 +2,26 @@ name: JAVA CI
 on: push
 jobs:
   clone-down:
+    name: clone down repo
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
-      - name: Clone-down
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: upload repo
+        uses: actions/upload-artifact@v2
+        with:
+          name: code
+          path: .
   Build:
       runs-on: ubuntu-latest
-      container: ubuntu-latest
+      container: gradle:6-jdk11
       steps:
         - name: build
           run: "gradle clean shadowjar -p app"
         - name: Test
           run: ci/unit-test-app.sh
-        - name: upload a Build Artifact
+        - name: upload repo
           uses: actions/upload-artifact@v2
-          with:
-            name: code
-            path: .
-        - name: download a single artifact
-          uses: actions/download-artifact@v2
           with:
             name: code
             path: .
