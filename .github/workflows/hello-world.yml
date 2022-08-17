@@ -1,9 +1,9 @@
 name: JAVA CI
 on: push
-env:
-  docker_username: {{secrets.DOCKER_USERNAME }}
-  docker_password: {{ secrets.DOCKER_TOKEN }}
-  GIT_COMMIT: ${{github.sha}}
+#env:
+#  docker_username: {{secrets.DOCKER_USERNAME }}
+#  docker_password: {{ secrets.DOCKER_TOKEN }}
+#  GIT_COMMIT: ${{github.sha}}
 jobs:
   clone-down:
     name: clone down repo
