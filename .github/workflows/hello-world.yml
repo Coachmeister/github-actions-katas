@@ -28,6 +28,9 @@ jobs:
           path: .
       - name: Build
         run: "gradle clean shadowjar -p app"
+  Test:
+    runs-on: ubuntu-latest
+    needs: Build
       - name: Test
         run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
       - name: upload repo
