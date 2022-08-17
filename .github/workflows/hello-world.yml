@@ -33,6 +33,10 @@ jobs:
     needs: clone-down
     container: gradle:6-jdk11
     steps:
+      - name: actions/download-artifact@v2
+        with:
+          name: code
+          path: .
       - name: Test
         run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
       - name: upload repo
