@@ -33,7 +33,8 @@ jobs:
     needs: clone-down
     container: gradle:6-jdk11
     steps:
-      - name: actions/download-artifact@v2
+      - name: download something
+        uses: actions/download-artifact@v2
         with:
           name: code
           path: .
@@ -49,7 +50,7 @@ jobs:
     needs: [Build, Test]
     steps:
       - name: download code
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: code
           path: .  
