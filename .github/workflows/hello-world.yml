@@ -8,4 +8,4 @@ jobs:
       - name: Clone-down
         uses: actions/checkout@v2
       - name: build
-        run: "grade clean shadowjar -p app"
+        run: "gradle clean shadowjar -p app"
